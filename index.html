@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart LED Face Greeter</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0f2027;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      font-size: 2rem;
+      color: #00e5ff;
+      font-family: monospace;
+    }
+    .typewriter-text::after {
+      content: 'Smart LED Face Greeter';
+      animation: typing 4s steps(30), blink 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00e5ff;
+      display: inline-block;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #ffcc00, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    h2 {
+      color: #00e5ff;
+    }
+    .section {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 95%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .section:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+      border: 1px solid #00e5ff;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .highlight {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.95rem;
+      color: #cccccc;
+    }
+    .author {
+      font-size: 1rem;
+      margin-top: -5px;
+      margin-bottom: 25px;
+      color: #90caf9;
+    }
+    a {
+      color: #00e5ff;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #ffffff;
+    }
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      font-size: 22px;
+      border: none;
+      outline: none;
+      background-color: #00e5ff;
+      color: white;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 50%;
+    }
+    #topBtn:hover {
+      background-color: #555;
+    }
+    @media screen and (max-width: 600px) {
+      .typewriter-text::after {
+        font-size: 2rem;
+      }
+      .section {
+        padding: 15px;
+      }
+      .author {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">Loading Project...</div>
+
+  <h1 class="typewriter-text"></h1>
+  <div class="author">Created by <strong>Aarav Singh</strong> | Class: <strong>12 Non-Medical</strong></div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>✨ Project Overview</h2>
+    <p>This project uses an <span class="highlight">Arduino UNO</span>, <span class="highlight">Ultrasonic Sensor</span>, and <span class="highlight">4x LED Matrix Displays</span> to create an interactive greeter. When someone approaches the display, it automatically scrolls the message:</p>
+    <p><em>"Hello! Welcome to Grade 12 Science"</em></p>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>🔧 Components Used</h2>
+    <ul style="text-align: left; display: inline-block;">
+      <li>Arduino UNO</li>
+      <li>HC-SR04 Ultrasonic Sensor</li>
+      <li>4 × 8x8 LED Matrix with MAX7219</li>
+      <li>Jumper Wires</li>
+      <li>Breadboard or PCB</li>
+    </ul>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>⚙️ How It Works</h2>
+    <p>The Ultrasonic Sensor continuously checks if a person is within <span class="highlight">15 cm</span> of the display. If someone is detected, the LED matrix scrolls the greeting message. After that, the display clears and resets.</p>
+    <p>It creates an engaging and touch-free way to welcome people and showcase Grade 12’s creativity!</p>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>🔌 Circuit Diagram</h2>
+    <p>Connect the components as follows:</p>
+    <ul style="text-align: left; display: inline-block;">
+      <li><b>LED Matrix</b>: DIN to D11, CS to D10, CLK to D13, VCC to 5V, GND to GND</li>
+      <li><b>Ultrasonic Sensor</b>: Trig to D8, Echo to D9, VCC to 5V, GND to GND</li>
+    </ul>
+    <p><em>Make sure all 4 matrices are connected in series (OUT of one → IN of next).</em></p>
+    <img src="circuit-placeholder.jpg" alt="Circuit Diagram Placeholder">
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>💻 Source Code</h2>
+    <p>The Arduino sketch uses the <span class="highlight">MD_Parola</span> and <span class="highlight">MD_MAX72XX</span> libraries to control the scrolling text.</p>
+    <p><a href="https://github.com/yourusername/Smart-LED-Face-Greeter" target="_blank">View Code on GitHub →</a></p>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>🛠️ Behind the Scenes</h2>
+    <p>During development, I faced fake Arduino boards, IDE driver issues, and matrix glitches. With the help of open-source libraries and testing, I overcame them to make the final version stable and responsive.</p>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>🚀 Future Upgrades</h2>
+    <ul style="text-align: left; display: inline-block;">
+      <li>Use a PIR sensor to reduce power draw</li>
+      <li>Add sound greeting using DFPlayer Mini</li>
+      <li>Control message via Bluetooth from phone</li>
+      <li>Build a custom PCB for neater wiring</li>
+    </ul>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>🧠 Skills Demonstrated</h2>
+    <ul style="text-align: left; display: inline-block;">
+      <li>Arduino Programming</li>
+      <li>Sensor Integration</li>
+      <li>Real-Time Trigger Systems</li>
+      <li>Electronics Debugging</li>
+      <li>UI/UX Design for Documentation</li>
+    </ul>
+  </div>
+
+  <div class="section" data-aos="fade-up">
+    <h2>📘 What I Learned</h2>
+    <p>This project taught me how to troubleshoot hardware, install libraries, and creatively solve problems — like using drivers for fake Arduinos and getting matrices to scroll text smoothly.</p>
+  </div>
+
+
+
+  <button onclick="topFunction()" id="topBtn" title="Go to top">⬆️</button>
+
+  <footer>
+    Made by Aarav Singh | Grade 12 Non-Medical | Guided by ChatGPT 😊
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    window.onload = () => {
+      document.getElementById('loader').style.display = 'none';
+    }
+    let mybutton = document.getElementById("topBtn");
+    window.onscroll = function() {
+      mybutton.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? "block" : "none";
+    };
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+</html>
